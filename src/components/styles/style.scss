@@ -1,0 +1,26 @@
+$textSize: 25px;
+$taskColor: rgb(122, 122, 122);
+$fontWeight: 700;
+
+
+@mixin task($fs,$fw, $tc) {
+    font-size: #{$fs};
+    color: #{$tc};
+    font-weight: #{$fw};
+}
+.task{
+    &-incomplete{
+        @include task($textSize,$fontWeight,$taskColor);
+    }
+    &-tick{
+        @include task($textSize,1000,rgb(38, 221, 47));
+    }
+    &-complete{
+        @include task($textSize,$fontWeight,$taskColor);
+        text-decoration: line-through;
+    }
+}
+
+.user{
+    @include task($textSize,$fontWeight,$taskColor)
+}

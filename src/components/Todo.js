@@ -13,10 +13,24 @@ function Todo() {
     const dispatch = useDispatch()
     const [task, setTask] = useState("")
     const [completed, setCompleted] = useState([])
+    const [notCompleted, setNotCompleted] = useState([])
+    const [totalTasks, setTotalTasks] = useState([])
+    const signin = useSelector(state => state.signin)
 
     useEffect(() => {
-        setCompleted(tasks.filter(task=>task.complete))
+        let incompleteTask = []
+        setCompleted(tasks.filter(task=>{
+            if(!task.complete){
+                incompleteTask = [...incompleteTask, task]
+            }
+            return task.complete
+        }))
+        setNotCompleted(incompleteTask)
     }, [tasks])
+
+    useEffect(() => {
+        setTotalTasks([...notCompleted,...completed])
+    }, [notCompleted,completed])
 
     return (
         <>
@@ -25,7 +39,9 @@ function Todo() {
                     Todo-App
                 </NavbarBrand>
                 <Form inline onSubmit={e=>e.preventDefault()}>
-                    <Form.Control className="mr-sm-2" type="text" onChange={e => {setTask(e.target.value)}} value={task} placeholder="Enter task name" />
+                    <Form.Control className="mr-sm-2" type="text" onChange={e => {
+                        let taskName = e.target.value
+                        setTask(taskName.charAt(0).toUpperCase()+taskName.slice(1))}} value={task} placeholder="Enter task name" />
                     <Button type="submit" variant="success" onClick={() => {
                         dispatch(increment())
                         dispatch(addTask([task,count]))
@@ -39,8 +55,9 @@ function Todo() {
                 <Button variant="danger" onClick={()=>{dispatch(signout())}}>Logout</Button>
             </Navbar>
             <Container fluid>
+                <br/><center className="user">Showing tasks for, {signin.user.name}</center>
                 <Row>
-                    {tasks.map(task=><Task key={task.no} no={task.no} name={task.task} complete={task.complete} />)}
+                    {totalTasks.map(task=><Task key={task.no} no={task.no} name={task.task} complete={task.complete} />)}
                 </Row>
             </Container>
         </>

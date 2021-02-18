@@ -1,0 +1,25 @@
+.task-incomplete {
+  font-size: 25px;
+  color: #7a7a7a;
+  font-weight: 700;
+}
+
+.task-tick {
+  font-size: 25px;
+  color: #26dd2f;
+  font-weight: 1000;
+}
+
+.task-complete {
+  font-size: 25px;
+  color: #7a7a7a;
+  font-weight: 700;
+  text-decoration: line-through;
+}
+
+.user {
+  font-size: 25px;
+  color: #7a7a7a;
+  font-weight: 700;
+}
+/*# sourceMappingURL=style.css.map */
