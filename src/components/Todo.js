@@ -57,7 +57,7 @@ function Todo() {
             <Container fluid>
                 <br/><center className="user">Showing tasks for, {signin.user.name}</center>
                 <Row>
-                    {totalTasks.map(task=><Task key={task.no} no={task.no} name={task.task} complete={task.complete} />)}
+                    {totalTasks.map(task=><Task key={task.no} no={task.no} name={task.task} complete={task.complete} repeat={task.repeat} />)}
                 </Row>
             </Container>
         </>

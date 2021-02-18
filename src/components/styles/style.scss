@@ -24,3 +24,10 @@ $fontWeight: 700;
 .user{
     @include task($textSize,$fontWeight,$taskColor)
 }
+
+.toggleRepeat{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: $taskColor;
+}

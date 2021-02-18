@@ -12,6 +12,13 @@ export const toggleComplete = (taskNo) => {
     }
 }
 
+export const toggleRepeat = (taskNo) => {
+    return {
+        type: "toggleRepeat",
+        payload: taskNo
+    }
+}
+
 export const deleteTask = (taskNo) => {
     return {
         type: "deleteTask",

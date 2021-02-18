@@ -22,4 +22,11 @@
   color: #7a7a7a;
   font-weight: 700;
 }
+
+.toggleRepeat {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #7a7a7a;
+}
 /*# sourceMappingURL=style.css.map */

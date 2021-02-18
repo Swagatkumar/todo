@@ -4,7 +4,8 @@ const todoReducer = (state = [], action) => {
             return [...state, {
                 no: action.payload[1],
                 task: action.payload[0],
-                complete: false
+                complete: false,
+                repeat: false
             }]
 
         case "toggleComplete":
@@ -13,6 +14,17 @@ const todoReducer = (state = [], action) => {
                     return {
                         ...task,
                         complete: !task.complete
+                    }
+                }
+                return task
+            })
+
+        case "toggleRepeat":
+            return state.map(task => {
+                if(task.no===action.payload){
+                    return {
+                        ...task,
+                        repeat: !task.repeat
                     }
                 }
                 return task
