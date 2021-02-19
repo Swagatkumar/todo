@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import { Button } from 'rebass'
 import { signin, signInFailure } from '../redux/user/userAction'
 
 function Signin() {
@@ -29,12 +30,13 @@ function Signin() {
 
     return (
         <div>
+            <div>Sign In to Todo-App</div><br/>
             <Form onSubmit={handleSubmit}>
                 <Form.Control ref={inputRef} type="text" value={userName} onChange={e=>setUserName(e.target.value)} placeholder="Enter Username" /><br/>
                 <Form.Control type="password" value={password} onChange={e=>setPassword(e.target.value)} placeholder="Enter Password" /><br/>
-                <Form.Control type="submit" className='btn btn-warning' />
+                <Button variant="primary">Sign In</Button>
             </Form>
-            <div>{signinDetail.error}</div>
+            <div style={{width: '350px',color:'red',fontSize:'17px'}}>{signinDetail.error}</div>
         </div>
     )
 }

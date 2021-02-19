@@ -6,12 +6,16 @@ import reportWebVitals from './reportWebVitals';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import theme from '@rebass/preset'
+import { ThemeProvider } from '@emotion/react'
 
 ReactDOM.render(
   <React.StrictMode>
+    <ThemeProvider theme={theme}>
     <Provider store={store}>
       <App />
     </Provider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
